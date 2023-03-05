@@ -42,7 +42,6 @@ const CreatePost = () => {
             value={form.name}
             handleChange={handleChange}
           />
-
           <FormField
             labelName="Prompt"
             type="text"
