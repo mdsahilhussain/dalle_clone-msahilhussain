@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
+import { baseURL } from "../utils";
 import { Loader, Card, FormField } from "../components";
 const Home = () => {
   const RenderCard = ({ data, title }) => {
@@ -23,7 +24,7 @@ const Home = () => {
     const fetchPosts = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch("http://localhost:8080/api/v1/post", {
+        const response = await fetch(`${baseURL}/api/v1/post`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -61,6 +62,7 @@ const Home = () => {
 
   return (
     <section className="max-w-7xl max-auto">
+      {console.log(baseURL)}
       <div>
         <h1 className="font-extrabold text-[#222328] text-[2rem]">
           The Community Showcase
@@ -95,7 +97,10 @@ const Home = () => {
             )}
             <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
               {searchText ? (
-                <RenderCard data={searchedResults} title="No search results found" />
+                <RenderCard
+                  data={searchedResults}
+                  title="No search results found"
+                />
               ) : (
                 <RenderCard data={allPosts} title="No posts found" />
               )}
