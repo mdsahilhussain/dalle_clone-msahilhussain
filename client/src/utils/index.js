@@ -11,4 +11,4 @@ export function getRandomPrompt(prompt) {
 export async function downloadImage(_id, photo) {
   FileSaver.saveAs(photo, `download-${_id}.jpg`);
 }
-export const baseURL = "https://dall-e-brtd.onrender.com";
+

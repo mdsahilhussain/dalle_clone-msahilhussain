@@ -1,5 +1,4 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { baseURL } from "../utils";
 import { Loader, Card, FormField } from "../components";
 const Home = () => {
   const RenderCard = ({ data, title }) => {
@@ -24,12 +23,15 @@ const Home = () => {
     const fetchPosts = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`${baseURL}/api/v1/post`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await fetch(
+          "https://dall-e-brtd.onrender.com/api/v1/post",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
         if (response.ok) {
           const result = await response.json();
           setAllPosts(result.data.reverse());
@@ -62,7 +64,6 @@ const Home = () => {
 
   return (
     <section className="max-w-7xl max-auto">
-      {console.log(baseURL)}
       <div>
         <h1 className="font-extrabold text-[#222328] text-[2rem]">
           The Community Showcase
